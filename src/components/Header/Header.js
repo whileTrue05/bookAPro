@@ -23,9 +23,9 @@ const Header = () => {
                   </li>
 
                   <li>
-                    <a className="btn btn-soft-dark btn-icon btn-smtransition-3d-hover" href="#!">
+                    <Link to="/cart" className="btn btn-soft-dark btn-icon btn-smtransition-3d-hover" href="#!">
                       <i className="fas fa-lg fa-shopping-cart"></i>
-                    </a>
+                    </Link>
                   </li>
 
                 </ul>

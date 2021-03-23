@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const Single = () => {
     return (
-        <div className="container space-2 space-lg-4">
+        <div className="container space-top-1 space-top-md-2 space-bottom-2 space-bottom-lg-3">
             <div className="row">
                 <div className="col-lg-7 mb-7 mb-lg-0">
                     <div className="pr-lg-4">
@@ -52,7 +52,7 @@ const Single = () => {
                     </div>
 
                     <div className="mb-4">
-                        <Link to="/product" type="button" className="btn btn-block btn-primary btn-pill transition-3d-hover"><i className="fas fa-plus"></i> Add to Cart</Link>
+                        <Link to="/cart" type="button" className="btn btn-block btn-primary btn-pill transition-3d-hover"><i className="fas fa-plus"></i> Add to Cart</Link>
                     </div>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 const Registration = () => {
     return (
-        <div className="container space-2 space-lg-4">
+        <div className="container space-top-1 space-top-md-2 space-bottom-2 space-bottom-lg-3">
             <form className="js-validate w-md-75 w-lg-50 mx-md-auto" noValidate="novalidate">
                 <div className="mb-5 mb-md-7">
                     <h1 className="h2 mb-0">Welcome to Front</h1>

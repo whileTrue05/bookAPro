@@ -1,10 +1,11 @@
 import ListingSidebar from './Sidebar';
 import productImage from '../../assets/img/300x180/img3.jpg';
 import { Link } from 'react-router-dom';
+import SubHero from '../SubHero/SubHero';
 
 const Listings = () => {
     return (
-        <div className="container space-2 space-lg-4">
+        <div className="container space-top-1 space-top-md-2 space-bottom-2 space-bottom-lg-3">
             <div className="row">
                 <div className="col-lg-3 mb-5 mb-lg-0">
                     <ListingSidebar />
