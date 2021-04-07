@@ -1,7 +1,7 @@
 
-import Hero from './Hero/Hero';
-import Categories from './Categories/Categories';
-import Bestsellers from './Bestsellers/Bestsellers';
+import Hero from '../components/Home/Hero/Hero';
+import Categories from '../components/Home/Categories/Categories';
+import Bestsellers from '../components/Home/Bestsellers/Bestsellers';
 
 const Home = () => {
 

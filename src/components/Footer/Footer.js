@@ -1,4 +1,5 @@
 import logo from '../../assets/svg/logos/logo.svg';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
     return (
@@ -7,7 +8,7 @@ const Header = () => {
                 <div className="container space-top-2">
                     <div className="row justify-content-md-between mb-6">
                         <div className="col-md-6 col-lg-5 mb-3 mb-md-0">
-                            <h2 className="text-white font-weight-normal">Subscribe to get the latest from Front</h2>
+                            <h2 className="text-white font-weight-normal">Subscribe to get the latest from BookAPro</h2>
                         </div>
 
                         <div className="col-md-6">
@@ -33,7 +34,7 @@ const Header = () => {
                 <div className="container">
                     <div className="space-top-2 space-bottom-1 space-bottom-lg-2">
                         <div className="row justify-content-lg-between">
-                            <div className="col-lg-3 ml-lg-auto mb-5 mb-lg-0">
+                            <div className="col-12 col-md-4 col-lg-4 ml-lg-auto mb-5 mb-lg-0">
                                 <div className="mb-4">
                                     <a href="#" aria-label="Front">
                                         <img className="brand" src={logo} alt="Logo" />
@@ -64,52 +65,38 @@ const Header = () => {
                                 </ul>
                             </div>
 
-                            <div className="col-6 col-md-3 col-lg mb-5 mb-lg-0">
+                            <div className="col-6 col-md-4 col-lg-4 mb-5 mb-lg-0">
                                 <h5 className="text-white">Company</h5>
 
                                 <ul className="nav nav-sm nav-x-0 nav-white flex-column">
-                                    <li className="nav-item"><a className="nav-link" href="#">About</a></li>
-                                    <li className="nav-item"><a className="nav-link" href="#">Careers <span className="badge badge-primary ml-1">We're hiring</span></a></li>
-                                    <li className="nav-item"><a className="nav-link" href="#">Blog</a></li>
-                                    <li className="nav-item"><a className="nav-link" href="#">Customers</a></li>
-                                    <li className="nav-item"><a className="nav-link" href="#">Hire us</a></li>
+                                    <li className="nav-item"><Link to="/about" className="nav-link" href="#">About</Link></li>
+                                    <li className="nav-item"><Link to="/blogs" className="nav-link" href="#!">Blog</Link></li>
+                                    <li className="nav-item"><Link to="/contact" className="nav-link" href="#">Contact Us</Link></li>
                                 </ul>
                             </div>
 
-                            <div className="col-6 col-md-3 col-lg mb-5 mb-lg-0">
-                                <h5 className="text-white">Features</h5>
 
-                                <ul className="nav nav-sm nav-x-0 nav-white flex-column">
-                                    <li className="nav-item"><a className="nav-link" href="#">Press</a></li>
-                                    <li className="nav-item"><a className="nav-link" href="#">Release notes</a></li>
-                                    <li className="nav-item"><a className="nav-link" href="#">Integrations</a></li>
-                                    <li className="nav-item"><a className="nav-link" href="#">Pricing</a></li>
-                                </ul>
-                            </div>
+                        
 
-                            <div className="col-6 col-md-3 col-lg">
-                                <h5 className="text-white">Documentation</h5>
-
-                                <ul className="nav nav-sm nav-x-0 nav-white flex-column">
-                                    <li className="nav-item"><a className="nav-link" href="#">Support</a></li>
-                                    <li className="nav-item"><a className="nav-link" href="#">Docs</a></li>
-                                    <li className="nav-item"><a className="nav-link" href="#">Status</a></li>
-                                    <li className="nav-item"><a className="nav-link" href="#">API Reference</a></li>
-                                    <li className="nav-item"><a className="nav-link" href="#">Tech Requirements</a></li>
-                                </ul>
-                            </div>
-
-                            <div className="col-6 col-md-3 col-lg">
+                            <div className="col-6 col-md-4 col-lg-4">
                                 <h5 className="text-white">Resources</h5>
 
                                 <ul className="nav nav-sm nav-x-0 nav-white flex-column">
                                     <li className="nav-item">
-                                        <a className="nav-link" href="#">
+                                        <Link to="/listings" className="nav-link" href="#">
                                             <span className="media align-items-center">
-                                                <i className="fa fa-info-circle mr-2"></i>
-                                                <span className="media-body">Help</span>
+                                                <i className="fa fa-shopping-cart mr-2"></i>
+                                                <span className="media-body">All Products</span>
                                             </span>
-                                        </a>
+                                        </Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link to="/categories" className="nav-link" href="#">
+                                            <span className="media align-items-center">
+                                                <i className="fa fa-list mr-2"></i>
+                                                <span className="media-body">All Categories</span>
+                                            </span>
+                                        </Link>
                                     </li>
                                     <li className="nav-item">
                                         <a className="nav-link" href="#">
@@ -131,15 +118,11 @@ const Header = () => {
                             <div className="col-md-6 mb-4 mb-md-0">
                                 <ul className="nav nav-sm nav-white nav-x-sm align-items-center">
                                     <li className="nav-item">
-                                        <a className="nav-link" href="#">Privacy & Policy</a>
+                                        <Link to="/privacy" className="nav-link" href="#!">Privacy & Policy</Link>
                                     </li>
                                     <li className="nav-item opacity mx-3">/</li>
                                     <li className="nav-item">
-                                        <a className="nav-link" href="#">Terms</a>
-                                    </li>
-                                    <li className="nav-item opacity mx-3">/</li>
-                                    <li className="nav-item">
-                                        <a className="nav-link" href="#">Site Map</a>
+                                        <Link to="/terms" className="nav-link" href="#!">Terms</Link>
                                     </li>
                                 </ul>
                             </div>
@@ -173,7 +156,7 @@ const Header = () => {
                         </div>
 
                         <div className="w-md-100 mx-lg-auto">
-                            <p className="text-white opacity-sm small">© Front. 2020 Htmlstream. All rights reserved.</p>
+                            <p className="text-white opacity-sm small">© BookAPro. 2020 Htmlstream. All rights reserved.</p>
                         </div>
                     </div>
                 </div>

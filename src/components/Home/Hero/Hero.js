@@ -29,7 +29,7 @@ const CustomNext = (props) => {
 }
 
 const sliderSettings = {
-    fade: true,
+    fade: false,
     infinite: true,
     autoplay: true,
     autoplaySpeed: 2500,
@@ -41,9 +41,9 @@ const sliderSettings = {
 const Hero = () => {
     return (
 
-        <div className="mt-0 py-0 mt-md-5 py-md-5 position-relative">
+        <div className="mt-0 py-0 position-relative">
 
-            <Slider id="heroSlider" className="mt-0 py-0 mt-md-5 py-md-5 bg-light" {...sliderSettings}>
+            <Slider id="heroSlider" className="mt-0 py-0 bg-light" {...sliderSettings}>
                 <div className="js-slide">
                     <div className="container space-top-2 space-bottom-3">
                         <div className="row align-items-lg-center">

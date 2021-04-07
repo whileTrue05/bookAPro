@@ -52,6 +52,9 @@ const Navigation = () => {
                 <Link className="dropdown-nav-link ml-0 ml-md-4 mt-2 mt-md-0 d-block" href="#!" to="/listings">
                     Category 4
                 </Link>
+                <Link className="dropdown-nav-link ml-0 ml-md-4 mt-2 mt-md-0 d-block" href="#!" to="/categories">
+                    All Categories
+                </Link>
             </div>
         </div>
     );
