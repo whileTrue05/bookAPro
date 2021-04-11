@@ -1,11 +1,36 @@
 import productImage from '../../assets/img/300x180/img3.jpg';
-import { Link } from 'react-router-dom';
-
+import { Link, useParams } from 'react-router-dom'
+import React, { useState, useEffect } from "react";
 
 
 const Single = () => {
+
+    const {serviceId} = useParams();
+    const [serviceDetail, setServiceDetail] = useState({});
+   
+   
+   
+
+   useEffect(() => {
+       console.log("The serviceID received is: "+serviceId)
+    console.log("Entered the useEffect block in Listings.JS");
+    fetch("/services/"+serviceId)
+      .then((res) => res.json())
+      .then((serviceDetails) => {
+        console.log(serviceDetails);
+        setServiceDetail(serviceDetails)
+      })
+      .catch((err) => console.log(`Error ${err}`));
+  }, []);
+
+
+  
+
+
     return (
+        <>
         <div className="container space-2 space-lg-4">
+        <div>{serviceDetail.name}</div>
             <div className="row">
                 <div className="col-lg-7 mb-7 mb-lg-0">
                     <div className="pr-lg-4">
@@ -56,7 +81,7 @@ const Single = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div></>
     )
 }
 

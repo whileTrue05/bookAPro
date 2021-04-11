@@ -1,18 +1,21 @@
-
-import Hero from './Hero/Hero';
-import Categories from './Categories/Categories';
-import Bestsellers from './Bestsellers/Bestsellers';
+import Hero from "./Hero/Hero";
+import CategoryList from "./Categories/Categories";
+import Bestsellers from "./Bestsellers/Bestsellers";
+import { useContext } from "react";
+import BookAProContext from "../Context/BookAProContextProvider";
 
 const Home = () => {
+  const { categories } = useContext(BookAProContext);
 
+  return (
+    <div id="home-container">
+      <Hero />
 
-    return (
-        <div id="home-container">
-            <Hero />
-            <Categories />
-            <Bestsellers />
-        </div>
-    )
-}
+      <CategoryList categories={categories} />
+
+      <Bestsellers />
+    </div>
+  );
+};
 
 export default Home;

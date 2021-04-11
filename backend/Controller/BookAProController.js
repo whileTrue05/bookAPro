@@ -39,6 +39,36 @@ BookAProController.initialize()
       }
     });
 
+
+
+    app.get("/categories/:id/services", function (req, res) {
+      BookAProController.getServicesByCategoryID(req.params.id)
+        .then(function (data) {
+          if (data.length > 0) {
+            res.json(data);
+          }
+        })
+        .catch(function (err) {
+          res.status(500).json({ message: err });
+        });
+    });
+
+
+
+    app.get("/services/:serviceId", function (req, res) {
+      BookAProController.getServicesByServiceID(req.params.serviceId)
+        .then(function (data) {
+          if (data.length > 0) {
+            res.json(data);
+          }
+        })
+        .catch(function (err) {
+          res.status(500).json({ message: err });
+        });
+    });
+
+
+
     app.listen(HTTP_PORT, function () {
       console.log("Server listening on: " + HTTP_PORT);
     });
@@ -46,3 +76,5 @@ BookAProController.initialize()
   .catch(function (err) {
     console.log(err);
   });
+
+  

@@ -207,3 +207,24 @@ module.exports.getServicesByCategoryID = function (categoryId) {
       });
   });
 };
+
+
+module.exports.getServicesByServiceID = function (serviceId) {
+  // console.log("getEmployeesByDepartment" + department);
+  return new Promise(function (resolve, reject) {
+    Services.findAll({
+      where: {
+        serviceId: serviceId,
+      },
+    })
+      .then(function (data) {
+        data = data.map((value) => value.dataValues);
+        //anyhow we are filtering by AN employee, it makes sense to always have data[0].
+        resolve(data); //should this be data
+      })
+      .catch(function (err) {
+        console.log(err);
+        reject(`Unable to find services for ${serviceId} category.`);
+      });
+  });
+};
