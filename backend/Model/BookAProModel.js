@@ -1,5 +1,6 @@
 const Sequelize = require("sequelize");
 
+
 const sequelize = new Sequelize(
   "dbnolgfvda2p5r",
   "kyktuyoxaubnwz",
@@ -58,8 +59,8 @@ var User = sequelize.define("User", {
   lname: Sequelize.STRING,
   email: Sequelize.STRING,
   password: Sequelize.STRING,
-  status: Sequelize.STRING,
-  lname: Sequelize.STRING,
+  status: Sequelize.SMALLINT,
+  role: Sequelize.SMALLINT,
 });
 
 var Services = sequelize.define("Service", {
@@ -189,7 +190,7 @@ module.exports.getAllCategories = function () {
 };
 
 module.exports.getServicesByCategoryID = function (categoryId) {
-  // console.log("getEmployeesByDepartment" + department);
+ 
   return new Promise(function (resolve, reject) {
     Services.findAll({
       where: {
@@ -198,8 +199,8 @@ module.exports.getServicesByCategoryID = function (categoryId) {
     })
       .then(function (data) {
         data = data.map((value) => value.dataValues);
-        //anyhow we are filtering by AN employee, it makes sense to always have data[0].
-        resolve(data); //should this be data
+        
+        resolve(data); 
       })
       .catch(function (err) {
         console.log(err);
@@ -210,7 +211,7 @@ module.exports.getServicesByCategoryID = function (categoryId) {
 
 
 module.exports.getServicesByServiceID = function (serviceId) {
-  // console.log("getEmployeesByDepartment" + department);
+  
   return new Promise(function (resolve, reject) {
     Services.findAll({
       where: {
@@ -219,8 +220,8 @@ module.exports.getServicesByServiceID = function (serviceId) {
     })
       .then(function (data) {
         data = data.map((value) => value.dataValues);
-        //anyhow we are filtering by AN employee, it makes sense to always have data[0].
-        resolve(data); //should this be data
+        
+        resolve(data); 
       })
       .catch(function (err) {
         console.log(err);
@@ -228,3 +229,18 @@ module.exports.getServicesByServiceID = function (serviceId) {
       });
   });
 };
+
+
+
+module.exports.addUser = function(userData){
+  return new Promise(function (resolve, reject) {
+    userData.status = 2
+    userData.role = 2
+    User.create(userData).then(()=>{
+        resolve("Employee Successfully Created")
+    }).catch(function(err){
+        console.log(err);
+        reject("Unable to Create Employee");
+    })
+})
+}

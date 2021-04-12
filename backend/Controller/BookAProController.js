@@ -1,13 +1,13 @@
 const express = require("express");
 const app = express();
-const bodyParser = require("body-parser");
+const bodyParser = require('body-parser');
 const BookAProController = require("../Model/BookAProModel");
 
 var HTTP_PORT = process.env.PORT || 8080;
 
 BookAProController.initialize()
   .then(() => {
-    // app.use(bodyParser.urlencoded({ extended: true }));
+    app.use(bodyParser.urlencoded({ extended: true }));
     app.use(express.json());
 
     app.get("/", function (req, res) {
@@ -64,6 +64,19 @@ BookAProController.initialize()
         })
         .catch(function (err) {
           res.status(500).json({ message: err });
+        });
+    });
+
+
+    app.post("/users/add", function (req, res) {
+      console.log(req.body);
+      BookAProController
+        .addUser(req.body)
+        .then(function (data) {
+          res.redirect("http://localhost:3000/");
+        })
+        .catch(function (err) {
+          res.status(422).json({ message: err });
         });
     });
 

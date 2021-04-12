@@ -54,15 +54,20 @@ const Registration = () => {
 
     return (
         <div className="container space-2 space-lg-4">
-            <form className="js-validate w-md-75 w-lg-50 mx-md-auto" noValidate="novalidate">
+            <form className="js-validate w-md-75 w-lg-50 mx-md-auto" noValidate="novalidate" action="/users/add" method="POST">
                 <div className="mb-5 mb-md-7">
                     <h1 className="h2 mb-0">Welcome to Front</h1>
                     <p>Fill out the form to get started.</p>
                 </div>
 
                 <div className="js-form-message form-group">
-                    <label className="input-label" htmlFor="signupNamme">Your name</label>
-                    <input type="text" className="form-control" name="name" id="signupNamme" placeholder="Your full name" aria-label="Your full name" required="" data-msg="Please enter a valid name." />
+                    <label className="input-label" htmlFor="signupNamme">First name</label>
+                    <input type="text" className="form-control" name="fname" id="signupNamme" placeholder="Your first name" aria-label="Your first name" required="" data-msg="Please enter a valid name." />
+                </div>
+
+                <div className="js-form-message form-group">
+                    <label className="input-label" htmlFor="signupNamme">Last name</label>
+                    <input type="text" className="form-control" name="lname" id="signupNamme" placeholder="Your last name" aria-label="Your last name" required="" data-msg="Please enter a valid name." />
                 </div>
 
                 <div className="js-form-message form-group">
