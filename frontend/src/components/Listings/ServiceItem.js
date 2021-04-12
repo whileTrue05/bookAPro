@@ -1,5 +1,5 @@
 import React from 'react'
-import productImage from '../../assets/img/300x180/img3.jpg'
+import productImage from '../../assets/img/300x180/img3.jpg';
 import { Link } from 'react-router-dom'
 const ServiceItem = (props) => {
     return (

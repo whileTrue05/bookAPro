@@ -14,7 +14,7 @@ const Categories = (props) => {
       </h2>
      
       <div className="row">
-      {props.categories.map((category)=>(<CategoryItem key={category.categoryId} id={category.categoryId} categoryName={category.name}/>))}
+      {props.categories.map((category)=>(<CategoryItem key={category.categoryId} id={category.categoryId} categoryName={category.name} categoryImage={category.image}/>))}
       </div>
     </div>
   );

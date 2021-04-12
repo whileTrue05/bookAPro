@@ -8,7 +8,7 @@ const CategoryItem = (props) => {
       <div className="overflow-hidden rounded-lg-pseudo">
         <div
           className="bg-img-hero rounded-lg min-h-450rem p-4 p-sm-8 transition-zoom-hover"
-          style={{ backgroundImage: "url(" + cat1 + ")" }}
+          style={{ backgroundImage: `url(${props.categoryImage})` }}
         >
           <span className="d-block small text-danger font-weight-bold text-cap">
             Limited time only
@@ -16,7 +16,7 @@ const CategoryItem = (props) => {
           <h2 className="display-4 mb-3">70% OFF</h2>
           <p className="text-dark">
             
-            {props.categoryName}
+            <h3>{props.categoryName}</h3>
           </p>
 
           <a

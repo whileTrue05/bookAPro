@@ -15,7 +15,7 @@ const Listings = () => {
    const {id} = useParams();
 
    useEffect(() => {
-    console.log("Entered the useEffect block in Listings.JS");
+    // console.log("Entered the useEffect block in Listings.JS");
     fetch("/categories/"+id+"/services")
       .then((res) => res.json())
       .then((services) => {
