@@ -2,6 +2,24 @@ import logo from '../../assets/svg/logos/logo.svg';
 import { Link } from 'react-router-dom';
 import Navigation from './Navigation';
 
+const searchValidation = (e) => {
+  let searchVal = document.getElementById('searchField');
+  if(searchVal.value == ''){
+    alert('Search query cannot be empty');
+    searchVal.focus();
+    e.preventDefault();
+    e.stopPropagation();
+  }
+
+  if(!searchVal.value.match(/^[^<>!$'\"/;`%]*$/)){
+    alert('Search query cannot contain special characters.')
+    searchVal.focus();
+    e.preventDefault();
+    e.stopPropagation();
+  }
+  
+}
+
 const Header = () => {
   return (
     <header id="header" className="header header-sticky-top-lg">
@@ -62,7 +80,7 @@ const Header = () => {
                             </div>
                           </div>
 
-                          <input type="text" className="form-control" name="buyAddress" placeholder="Search here..." aria-label="Search here..." />
+                          <input type="text" className="form-control" name="buyAddress" placeholder="Search here..." aria-label="search-field" />
                         </div>
                       </div>
 
@@ -76,7 +94,7 @@ const Header = () => {
                         </select>
                       </div>
                       <div className="input-group-append">
-                        <Link to="/listings" type="submit" className="rounded-0 btn btn-block btn-primary">Search</Link>
+                        <Link to="/listings" type="submit" className="rounded-0 btn btn-block btn-primary" onClick={searchValidation}>Search</Link>
                       </div>
                     </div>
                   </div>

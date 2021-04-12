@@ -13,10 +13,10 @@ const AllCategories = () => {
 
 
         <div class="row mb-5">
-          <div class="col-lg-4 mb-3 mb-sm-5">
+          <div aria-label="cat-item" class="cat-item col-lg-4 mb-3 mb-sm-5">
             <a class="card h-100 transition-3d-hover" href="#">
               <div class="position-relative">
-                <img class="card-img-top" src={catImg} alt="SVG" />
+                <img aria-label="cat-item-img" class="card-img-top" src={catImg} alt="SVG" />
                 <div class="position-absolute top-0 left-0 pt-3 pl-3">
                   <span class="badge badge-primary badge-pill">Bestseller</span>
                 </div>
@@ -31,10 +31,10 @@ const AllCategories = () => {
             </a>
           </div>
 
-          <div class="col-lg-4 mb-3 mb-sm-5">
+          <div aria-label="cat-item" class="cat-item col-lg-4 mb-3 mb-sm-5">
             <a class="card h-100 transition-3d-hover" href="#">
               <div class="position-relative">
-                <img class="card-img-top" src={catImg} alt="SVG" />
+              <img aria-label="cat-item-img" class="card-img-top" src={catImg} alt="SVG" />
 
               </div>
               <div class="card-body pb-0">
@@ -47,10 +47,10 @@ const AllCategories = () => {
             </a>
           </div>
 
-          <div class="col-lg-4 mb-3 mb-sm-5">
+          <div aria-label="cat-item" class="cat-item col-lg-4 mb-3 mb-sm-5">
             <a class="card h-100 transition-3d-hover" href="#">
               <div class="position-relative">
-                <img class="card-img-top" src={catImg} alt="SVG" />
+              <img aria-label="cat-item-img" class="card-img-top" src={catImg} alt="SVG" />
               </div>
               <div class="card-body pb-0">
                 <h4>Objects and dimensions</h4>
@@ -62,10 +62,10 @@ const AllCategories = () => {
             </a>
           </div>
 
-          <div class="col-lg-4 mb-3 mb-sm-5">
+          <div aria-label="cat-item" class="cat-item col-lg-4 mb-3 mb-sm-5">
             <a class="card h-100 transition-3d-hover" href="#">
               <div class="position-relative">
-                <img class="card-img-top" src={catImg} alt="SVG" />
+              <img aria-label="cat-item-img" class="card-img-top" src={catImg} alt="SVG" />
                 <div class="position-absolute top-0 left-0 pt-3 pl-3">
                   <span class="badge badge-primary badge-pill">Bestseller</span>
                 </div>
@@ -80,10 +80,10 @@ const AllCategories = () => {
             </a>
           </div>
 
-          <div class="col-lg-4 mb-3 mb-sm-5">
+          <div aria-label="cat-item" class="cat-item col-lg-4 mb-3 mb-sm-5">
             <a class="card h-100 transition-3d-hover" href="#">
               <div class="position-relative">
-                <img class="card-img-top" src={catImg} alt="SVG" />
+              <img aria-label="cat-item-img" class="card-img-top" src={catImg} alt="SVG" />
 
               </div>
               <div class="card-body pb-0">
@@ -96,10 +96,10 @@ const AllCategories = () => {
             </a>
           </div>
 
-          <div class="col-lg-4 mb-3 mb-sm-5">
+          <div aria-label="cat-item" class="cat-item col-lg-4 mb-3 mb-sm-5">
             <a class="card h-100 transition-3d-hover" href="#">
               <div class="position-relative">
-                <img class="card-img-top" src={catImg} alt="SVG" />
+              <img aria-label="cat-item-img" class="card-img-top" src={catImg} alt="SVG" />
                 <div class="position-absolute top-0 left-0 pt-3 pl-3">
                   <span class="badge badge-primary badge-pill">Free</span>
                 </div>

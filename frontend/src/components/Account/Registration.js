@@ -1,5 +1,57 @@
 import { Link } from 'react-router-dom';
+import { useState } from 'react'
+
+export const validateEmail = (str = "") => str.includes(".");
+
 const Registration = () => {
+
+    const [input, setInput] = useState("");
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [errorEmail, setErrorEmail] = useState("");
+    const [errorPassword, setErrorPassword] = useState("");
+    const [errorName, setErrorName] = useState("");
+
+    const validateSignUp = () => {
+
+        let isValidated = true;
+
+        if (name === "") {
+            setErrorName("! Please enter your name");
+            isValidated = false;
+        }
+
+
+        else {
+            setErrorName("")
+        }
+        if (email === "") {
+            setErrorEmail("! Enter Your Email");
+            isValidated = false;
+        }
+
+
+        else {
+            setErrorEmail("")
+        }
+
+        if (password === "") {
+            setErrorPassword("! Enter Your Password");
+            isValidated = false;
+        }
+
+
+        else {
+            setErrorPassword("")
+        }
+
+
+        return isValidated;
+
+    }
+    const handleChange = ({ target: { name, value } }) => setEmail((prev) => ({ ...prev }, [name], value))
+
     return (
         <div className="container space-2 space-lg-4">
             <form className="js-validate w-md-75 w-lg-50 mx-md-auto" noValidate="novalidate">
@@ -43,7 +95,7 @@ const Registration = () => {
                 <div className="row align-items-center mb-5">
                     <div className="col-sm-6 mb-3 mb-sm-0">
                         <span className="font-size-1 text-muted">Already have an account?</span>
-                        <Link to="/login" className="font-size-1 font-weight-bold ml-2" href="#!">Login</Link>
+                        <a to="/login" className="font-size-1 font-weight-bold ml-2" href="#!">Login</a>
                     </div>
 
                     <div className="col-sm-6 text-sm-right">
