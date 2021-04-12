@@ -2,7 +2,7 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react'
 
-export const validateEmail = (str = "") => str.includes("@");
+export const validateEmail = (str = "") => str.includes(".");
 
 const Registration = () => {
 
