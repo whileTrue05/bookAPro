@@ -49,7 +49,7 @@ const Hero = () => {
                         <div className="row align-items-lg-center">
                             <div className="col-lg-5 order-lg-2 mb-7 mb-lg-0">
                                 <div className="mb-6">
-                                    <h1 className="display-4 mb-4">Front original design cap</h1>
+                                    <h1 className="display-4 mb-4">Kitchen Design Services</h1>
                                     <p>As well as being game-changers when it comes to technical innovation, Front has some of the bestselling cap in its locker.</p>
                                 </div>
                                 <Link to="/product" className="btn btn-primary btn-pill transition-3d-hover px-5 mr-2" href="#">$59 - View Product</Link>
@@ -59,7 +59,7 @@ const Hero = () => {
                             </div>
                             <div className="col-lg-6 order-lg-1">
                                 <div className="w-85 mx-auto">
-                                    <img className="img-fluid" src={sliderImg1} alt="Image Description" />
+                                    <img className="img-fluid" src="https://images.unsplash.com/photo-1484154218962-a197022b5858?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1653&q=80" alt="Image Description" />
                                 </div>
                             </div>
                         </div>
@@ -71,7 +71,7 @@ const Hero = () => {
                         <div className="row align-items-lg-center">
                             <div className="col-lg-5 order-lg-2 mb-7 mb-lg-0">
                                 <div className="mb-6">
-                                    <h1 className="display-4 mb-4">Front original design cap</h1>
+                                    <h1 className="display-4 mb-4">Personal Cleaning and Repair Services</h1>
                                     <p>As well as being game-changers when it comes to technical innovation, Front has some of the bestselling cap in its locker.</p>
                                 </div>
                                 <Link to="/product" className="btn btn-primary btn-pill transition-3d-hover px-5 mr-2" href="#">$59 - View Product</Link>
@@ -81,7 +81,29 @@ const Hero = () => {
                             </div>
                             <div className="col-lg-6 order-lg-1">
                                 <div className="w-85 mx-auto">
-                                    <img className="img-fluid" src={sliderImg2} alt="Image Description" />
+                                    <img className="img-fluid" src="https://images.unsplash.com/photo-1482731215275-a1f151646268?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1650&q=80" alt="Image Description" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="js-slide">
+                    <div className="container space-top-2 space-bottom-3">
+                        <div className="row align-items-lg-center">
+                            <div className="col-lg-5 order-lg-2 mb-7 mb-lg-0">
+                                <div className="mb-6">
+                                    <h1 className="display-4 mb-4">Home Decorators and Designers</h1>
+                                    <p>As well as being game-changers when it comes to technical innovation, Front has some of the bestselling cap in its locker.</p>
+                                </div>
+                                <Link to="/product" className="btn btn-primary btn-pill transition-3d-hover px-5 mr-2" href="#">$59 - View Product</Link>
+                                <a className="btn btn-icon btn-outline-primary rounded-circle" href="#" data-toggle="tooltip" data-placement="top" title="Save for later">
+                                    <i className="fas fa-heart"></i>
+                                </a>
+                            </div>
+                            <div className="col-lg-6 order-lg-1">
+                                <div className="w-85 mx-auto">
+                                    <img className="img-fluid" src="https://images.unsplash.com/photo-1618221999490-9418f64786aa?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2089&q=80" alt="Image Description" />
                                 </div>
                             </div>
                         </div>

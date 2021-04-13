@@ -27,7 +27,7 @@ const BestSellerItem = (props) => {
 
                         <div className="card-body pt-4 px-4 pb-0">
                             <div className="mb-2">
-                                <a className="d-inline-block text-body small font-weight-bold mb-1" href="#">Accessories</a>
+                                
                                 <span className="d-block font-size-1">
                                     <a className="text-inherit" href="shop-single-product.html">{props.bestSellerName}</a>
                                 </span>

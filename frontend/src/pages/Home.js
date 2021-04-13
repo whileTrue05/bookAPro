@@ -1,6 +1,6 @@
 import Hero from "../components/Home/Hero/Hero";
 import CategoryList from "../components/Home/Categories/Categories";
-import BestSellers from "../components/Home/Bestsellers/BestSellers"
+import BestSellers from "../components/Home/Bestsellers/Bestsellers"
 import { useContext } from "react";
 import BookAProContext from "../components/Context/BookAProContextProvider";
 
