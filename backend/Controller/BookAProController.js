@@ -80,6 +80,20 @@ BookAProController.initialize()
         });
     });
 
+    app.get("/bestsellers", function(req, res){
+      BookAProController.getBestSellers()
+      .then(function (data) {
+        //console.log("Came into then part of /employees");
+        if (data.length > 0) {
+          res.json(data);
+        }
+      })
+      .catch(function (err) {
+        res.status(500).json({ message: err });
+      });
+    })
+    
+
 
 
     app.listen(HTTP_PORT, function () {

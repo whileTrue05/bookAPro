@@ -1,6 +1,53 @@
 import { Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import ServiceList from "../Listings/ServiceList"
 
 const Navigation = () => {
+
+  const [flooring, setFlooring] = useState([]);
+  const [movingStorage, setMovingStorage] = useState([]);
+  const [decoratorsDesigners, setDecoratorsDesigners] = useState([]);
+  const [cleaning, setCleaning] = useState([]);
+  useEffect(() => {
+    console.log("Entered the useEffect block");
+    fetch("/categories/6/services")
+      .then((res) => res.json())
+      .then((flooring) => {
+        console.log(flooring);
+        setFlooring(flooring);
+      })
+      .catch((err) => console.log(`Error ${err}`));
+
+      fetch("/categories/10/services")
+      .then((res) => res.json())
+      .then((moving) => {
+        console.log(moving);
+        setMovingStorage(moving);
+      })
+      .catch((err) => console.log(`Error ${err}`));
+
+      fetch("/categories/4/services")
+      .then((res) => res.json())
+      .then((decorators) => {
+        console.log(decorators);
+        setDecoratorsDesigners(decorators);
+      })
+      .catch((err) => console.log(`Error ${err}`));
+
+      fetch("/categories/2/services")
+      .then((res) => res.json())
+      .then((cleaning) => {
+        console.log(cleaning);
+        setCleaning(cleaning);
+      })
+      .catch((err) => console.log(`Error ${err}`));
+
+  }, []);
+
+
+
+
     return (
         <div id="navBar" className="hide collapse d-md-block bg-white pb-3">
             <div className="container d-md-none">
@@ -36,21 +83,25 @@ const Navigation = () => {
                 </div>
             </div>
             <div className="container d-md-flex align-items-center">
-
-                <Link className="dropdown-nav-link d-block" href="#!" to="/listings">
+              
+                <Link className="dropdown-nav-link d-block" to="/bestsellers">
                     Bestsellers
                 </Link>
-                <Link className="dropdown-nav-link ml-0 ml-md-4 mt-2 mt-md-0 d-block" href="#!" to="/listings">
-                    Category 1
+                <Link className="dropdown-nav-link ml-0 ml-md-4 mt-2 mt-md-0 d-block" to="/categories/6/services">
+                    Flooring
+                   
                 </Link>
-                <Link className="dropdown-nav-link ml-0 ml-md-4 mt-2 mt-md-0 d-block" href="#!" to="/listings">
-                    Category 2
+                <Link className="dropdown-nav-link ml-0 ml-md-4 mt-2 mt-md-0 d-block"  to="/categories/10/services">
+                    Moving & Storage
+                    
                 </Link>
-                <Link className="dropdown-nav-link ml-0 ml-md-4 mt-2 mt-md-0 d-block" href="#!" to="/listings">
-                    Category 3
+                <Link className="dropdown-nav-link ml-0 ml-md-4 mt-2 mt-md-0 d-block"  to="/categories/4/services">
+                    Decorators & Designers
+                    
                 </Link>
-                <Link className="dropdown-nav-link ml-0 ml-md-4 mt-2 mt-md-0 d-block" href="#!" to="/listings">
-                    Category 4
+                <Link className="dropdown-nav-link ml-0 ml-md-4 mt-2 mt-md-0 d-block" to="/categories/2/services">
+                    Cleaning
+                   
                 </Link>
             </div>
         </div>

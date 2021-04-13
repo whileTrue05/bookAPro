@@ -1,19 +1,20 @@
 import Hero from "../components/Home/Hero/Hero";
 import CategoryList from "../components/Home/Categories/Categories";
-import Bestsellers from "../components/Home/Bestsellers/Bestsellers";
+import BestSellers from "../components/Home/Bestsellers/BestSellers"
 import { useContext } from "react";
 import BookAProContext from "../components/Context/BookAProContextProvider";
 
 const Home = () => {
   const { categories } = useContext(BookAProContext);
-
+  const { bestseller } = useContext(BookAProContext);
+  
   return (
     <div id="home-container">
       <Hero />
 
       <CategoryList categories={categories} />
 
-      <Bestsellers />
+      <BestSellers bestseller={bestseller}/>
     </div>
   );
 };

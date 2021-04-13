@@ -2,6 +2,7 @@ import logo from '../../assets/svg/logos/logo.svg';
 import { Link } from 'react-router-dom';
 import Navigation from './Navigation';
 
+
 const searchValidation = (e) => {
   let searchVal = document.getElementById('searchField');
   if(searchVal.value == ''){

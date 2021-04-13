@@ -8,7 +8,7 @@ const ServiceItem = (props) => {
                    <div className="col-6 col-md-4 px-2 px-sm-3 mb-3 mb-sm-5">
                        <div className="card card-bordered shadow-none text-center h-100">
                             <div className="position-relative">
-                                <img className="card-img-top" src={productImage} alt="Image Description" />
+                                <img className="card-img-top" src={props.serviceImage} alt="Image Description" />
 
                                 <div className="position-absolute top-0 left-0 pt-3 pl-3">
                                     <span className="badge badge-success badge-pill">New arrival</span>

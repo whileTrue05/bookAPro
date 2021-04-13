@@ -68,9 +68,9 @@ const Header = () => {
                                 <h5 className="text-white">Company</h5>
 
                                 <ul className="nav nav-sm nav-x-0 nav-white flex-column">
-                                    <li className="nav-item"><a className="nav-link" href="#">About</a></li>
+                                    <li className="nav-item"><a className="nav-link" href="/about">About</a></li>
                                     <li className="nav-item"><a className="nav-link" href="#">Careers <span className="badge badge-primary ml-1">We're hiring</span></a></li>
-                                    <li className="nav-item"><a className="nav-link" href="#">Blog</a></li>
+                                    <li className="nav-item"><a className="nav-link" href="/blogs">Blog</a></li>
                                     <li className="nav-item"><a className="nav-link" href="#">Customers</a></li>
                                     <li className="nav-item"><a className="nav-link" href="#">Hire us</a></li>
                                 </ul>
@@ -91,7 +91,7 @@ const Header = () => {
                                 <h5 className="text-white">Documentation</h5>
 
                                 <ul className="nav nav-sm nav-x-0 nav-white flex-column">
-                                    <li className="nav-item"><a className="nav-link" href="#">Support</a></li>
+                                    <li className="nav-item"><a className="nav-link" href="/contact">Support</a></li>
                                     <li className="nav-item"><a className="nav-link" href="#">Docs</a></li>
                                     <li className="nav-item"><a className="nav-link" href="#">Status</a></li>
                                     <li className="nav-item"><a className="nav-link" href="#">API Reference</a></li>
@@ -131,11 +131,11 @@ const Header = () => {
                             <div className="col-md-6 mb-4 mb-md-0">
                                 <ul className="nav nav-sm nav-white nav-x-sm align-items-center">
                                     <li className="nav-item">
-                                        <a className="nav-link" href="#">Privacy & Policy</a>
+                                        <a className="nav-link" href="/privacy">Privacy & Policy</a>
                                     </li>
                                     <li className="nav-item opacity mx-3">/</li>
                                     <li className="nav-item">
-                                        <a className="nav-link" href="#">Terms</a>
+                                        <a className="nav-link" href="/terms">Terms</a>
                                     </li>
                                     <li className="nav-item opacity mx-3">/</li>
                                     <li className="nav-item">

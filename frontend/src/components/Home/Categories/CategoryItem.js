@@ -10,11 +10,11 @@ const CategoryItem = (props) => {
           className="bg-img-hero rounded-lg min-h-450rem p-4 p-sm-8 transition-zoom-hover"
           style={{ backgroundImage: `url(${props.categoryImage})` }}
         >
-          <span className="d-block small text-danger font-weight-bold text-cap">
-          <strong>Limited time only</strong>
+          <span className="d-block small text-success font-weight-bold text-cap">
+          <strong>Confirmed Service in minutes</strong>
           </span>
-          <h2 className="display-4 mb-3 text-light">70% OFF</h2>
-          <p className="text-light">
+          <h2 className="display-4 mb-3 text-white">10% OFF</h2>
+          <p className="text-white">
             
            <strong>{props.categoryName}</strong>
           </p>

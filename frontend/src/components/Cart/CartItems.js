@@ -146,7 +146,7 @@ const CartItems = () => {
 
 
     <div class="d-sm-flex justify-content-start">
-      <Link to="/listings" class="font-weight-bold" href="#">
+      <Link to="/" class="font-weight-bold" >
         <i class="fas fa-angle-left fa-xs mr-1"></i>
         Continue shopping
       </Link>

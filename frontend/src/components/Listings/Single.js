@@ -30,7 +30,7 @@ const Single = () => {
 
     return (
         <>
-            {serviceDetail.map((serviceDetail)=>(<SingleServiceDetails key={serviceDetail.serviceId} id={serviceDetail.serviceId} serviceName={serviceDetail.name} servicePrice={serviceDetail.pricePerHour} serviceDescription={serviceDetail.description}/>))}
+            {serviceDetail.map((serviceDetail)=>(<SingleServiceDetails key={serviceDetail.serviceId} id={serviceDetail.serviceId} serviceName={serviceDetail.name} servicePrice={serviceDetail.pricePerHour} serviceDescription={serviceDetail.description} serviceImage={serviceDetail.image}/>))}
         </>
     )
 }

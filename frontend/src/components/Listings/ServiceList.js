@@ -5,7 +5,7 @@ import ServiceItem from "./ServiceItem"
 const ServiceList = (props) => {
     return (
         <div>
-             {props.services.map((service)=>(<ServiceItem key={service.serviceId} id={service.serviceId} serviceName={service.name} servicePrice={service.pricePerHour}/>))}
+             {props.services.map((service)=>(<ServiceItem key={service.serviceId} id={service.serviceId} serviceName={service.name} servicePrice={service.pricePerHour} serviceImage={service.image}/>))}
         </div>
     )
 }

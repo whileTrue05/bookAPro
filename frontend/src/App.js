@@ -28,9 +28,14 @@ import BookAProContext from "./components/Context/BookAProContextProvider";
 
 function App() {
   const [categories, setCategories] = useState([]);
+  const [bestseller, setBestSeller] = useState([]);
+  const [flooring, setFlooring] = useState([]);
+  // const [movingStorage, setMovingStorage] = useState([]);
+  // const [decoratorsDesigners, setDecoratorsDesigners] = useState([]);
+  // const [cleaning, setCleaning] = useState([]);
   // const [services, setServices] = useState([]);
   // const {id} = useParams();
-
+  
   useEffect(() => {
     console.log("Entered the useEffect block");
     fetch("/categories")
@@ -41,18 +46,52 @@ function App() {
       })
       .catch((err) => console.log(`Error ${err}`));
 
-      // fetch("/categories/"+id+"/services")
+
+      fetch("/bestsellers")
+      .then((res) => res.json())
+      .then((bestSeller) => {
+        console.log(bestSeller);
+        setBestSeller(bestSeller);
+      })
+      .catch((err) => console.log(`Error ${err}`));
+
+      fetch("/categories/6/services")
+      .then((res) => res.json())
+      .then((flooring) => {
+        console.log(flooring);
+        setFlooring(flooring);
+      })
+      .catch((err) => console.log(`Error ${err}`));
+
+      // fetch("/categories/10/services")
       // .then((res) => res.json())
-      // .then((services) => {
-      //   console.log(`Services for each service category ${services}`);
-      //   setServices(services);
+      // .then((moving) => {
+      //   console.log(moving);
+      //   setMovingStorage(moving);
       // })
       // .catch((err) => console.log(`Error ${err}`));
+
+      // fetch("/categories/4/services")
+      // .then((res) => res.json())
+      // .then((decorators) => {
+      //   console.log(decorators);
+      //   setDecoratorsDesigners(decorators);
+      // })
+      // .catch((err) => console.log(`Error ${err}`));
+
+      // fetch("/categories/2/services")
+      // .then((res) => res.json())
+      // .then((cleaning) => {
+      //   console.log(cleaning);
+      //   setCleaning(cleaning);
+      // })
+      // .catch((err) => console.log(`Error ${err}`));
+
   }, []);
 
   return (
     <div id="main-container">
-      <BookAProContext.Provider value={{ categories }}>
+      <BookAProContext.Provider value={{ categories, bestseller, flooring }}>
         <Router>
           <Header />
           <Switch>
@@ -108,6 +147,9 @@ function App() {
             <Route path="/blog">
               <Blog />
             </Route>
+
+           
+
           </Switch>
 
           <Footer />

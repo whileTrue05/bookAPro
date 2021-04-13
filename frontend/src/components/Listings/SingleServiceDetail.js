@@ -16,7 +16,7 @@ const SingleServiceDetail = (props) => {
                         <div className="position-relative">
                             <div  className=" border rounded-lg">
                                 <div className="js-slide">
-                                    <img className="img-fluid w-100 rounded-lg" src={productImage} alt="Image Description" />
+                                    <img className="img-fluid w-100 rounded-lg" src={props.serviceImage} alt="Image Description" />
                                 </div>
                             </div>
 
@@ -38,7 +38,7 @@ const SingleServiceDetail = (props) => {
                         <span className="text-body ml-2"><del>$179.99</del></span>
                     </div>
 
-                    <div className="border rounded-lg py-2 px-3 mb-3">
+                    <div className="py-2 px-3 mb-3">
                         <div className="js-quantity-counter row align-items-center">
                             <div className="col-7">
                                 <small className="d-block text-body font-weight-bold">Select Date & Time:</small>
@@ -47,19 +47,19 @@ const SingleServiceDetail = (props) => {
                                     <DateTimePicker onChange={onChange} value={value}/>
                                 </div>
                             </div>
-                            <div className="col-5 text-right">
+                            {/* <div className="col-5 text-right">
                                 <a className="js-minus btn btn-xs btn-icon btn-outline-secondary rounded-circle" href="#!">
                                     <i className="fas fa-minus"></i>
                                 </a>
                                 <a className="js-plus btn btn-xs btn-icon btn-outline-secondary rounded-circle" href="#!">
                                     <i className="fas fa-plus"></i>
                                 </a>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
 
                     <div className="mb-4">
-                        <Link to="/product" type="button" className="btn btn-block btn-primary btn-pill transition-3d-hover"><i className="fas fa-plus"></i> Add to Cart</Link>
+                        <Link to="/cart" type="button" className="btn btn-block btn-primary btn-pill transition-3d-hover"><i className="fas fa-plus"></i> Add to Cart</Link>
                     </div>
                 </div>
             </div>

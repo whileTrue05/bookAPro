@@ -75,6 +75,7 @@ var Services = sequelize.define("Service", {
   location: Sequelize.STRING,
   pricePerHour: Sequelize.DOUBLE,
   status: Sequelize.SMALLINT,
+  bestseller: Sequelize.CHAR,
 });
 
 var Cart = sequelize.define("Cart", {
@@ -244,3 +245,24 @@ module.exports.addUser = function(userData){
     })
 })
 }
+
+
+module.exports.getBestSellers = function () {
+  
+  return new Promise(function (resolve, reject) {
+    Services.findAll({
+      where: {
+        bestseller: 'Y',
+      },
+    })
+      .then(function (data) {
+        data = data.map((value) => value.dataValues);
+        
+        resolve(data); 
+      })
+      .catch(function (err) {
+        console.log(err);
+        reject(`Unable to find services in bestseller.`);
+      });
+  });
+};
