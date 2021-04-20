@@ -4,19 +4,18 @@ import cat1 from "../../../assets/img/900x900/img3.jpg";
 const CategoryItem = (props) => {
   return (
     
-    <Link to={"/categories/"+props.id+"/services"} className="col-md-6 mb-4">
+    <Link to={"/category/"+props.id} className="col-md-6 mb-4">
       <div className="overflow-hidden rounded-lg-pseudo">
         <div
-          className="bg-img-hero rounded-lg min-h-450rem p-4 p-sm-8 transition-zoom-hover"
+          className="bg-img-hero rounded-lg min-h-450rem p-4 p-sm-8 transition-zoom-hover position-relative"
           style={{ backgroundImage: `url(${props.categoryImage})` }}
         >
-          <span className="d-block small text-success font-weight-bold text-cap">
-          <strong>Confirmed Service in minutes</strong>
-          </span>
-          <h2 className="display-4 mb-3 text-white">10% OFF</h2>
+          <div style={{top: 0,left: 0,background: '#00000075',zIndex: '-9'}} class="position-absolute h-100 w-100 rounded-lg"></div>
+
+          <h2 className="display-4 mb-3 text-success">{props.categoryName}</h2>
           <p className="text-white">
             
-           <strong>{props.categoryName}</strong>
+           <strong>{props.categoryDescription}</strong>
           </p>
 
           <a

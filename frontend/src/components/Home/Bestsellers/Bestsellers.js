@@ -73,9 +73,9 @@ const Bestsellers = (props) => {
         <h2 className="display-5 text-center mb-5 mt-5 mt-md-0">
           Our Bestsellers
         </h2>
-        <Slider id="bestSellerSlider" className="mt-0 py-0 mt-md-5 py-md-5" {...sliderSettings}>
+        <div className="row">
         {props.bestseller.map((bestSellerItem)=>(<BestSellerItem key={bestSellerItem.serviceId} id={bestSellerItem.serviceId} bestSellerName={bestSellerItem.name} bestSellerPrice={bestSellerItem.pricePerHour} bestSellerImage={bestSellerItem.image}/>))}
-        </Slider>
+        </div>
       </div>
     )
 }

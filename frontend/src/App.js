@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Switch, Route, useParams } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect, useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import "./css/App.css";
 import "./assets/css/theme.min.css";
@@ -17,6 +17,8 @@ import Terms from './pages/Terms';
 import Privacy from './pages/Privacy';
 import Home from './pages/Home';
 import Login from "./components/Account/Login";
+import ProviderLogin from "./components/Account/ProviderLogin";
+import AdminLogin from "./components/Account/AdminLogin";
 import Registration from "./components/Account/Registration";
 import Footer from "./components/Footer/Footer";
 import Listings from "./components/Listings/Listings";
@@ -25,11 +27,21 @@ import Checkout from './components/Cart/CartSuccess';
 import AllCategories from "./pages/AllCategories";
 
 import BookAProContext from "./components/Context/BookAProContextProvider";
+import ScrollToTop from './components/Context/ScrollToTop';
+import User from "./components/Account/User";
+import Provider from "./components/Account/Provider";
+import Admin from "./components/Account/Admin";
+
 
 function App() {
+  const [user, setUser] = useState([]);
+  const [userData, setUserData] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [services, setServices] = useState([]);
   const [bestseller, setBestSeller] = useState([]);
-  const [flooring, setFlooring] = useState([]);
+  const [cartItems, setCart] = useState([]);
+  const [cartTotal, setCartTotal] = useState(0);
+
   // const [movingStorage, setMovingStorage] = useState([]);
   // const [decoratorsDesigners, setDecoratorsDesigners] = useState([]);
   // const [cleaning, setCleaning] = useState([]);
@@ -37,121 +49,185 @@ function App() {
   // const {id} = useParams();
   
   useEffect(() => {
-    console.log("Entered the useEffect block");
     fetch("/categories")
-      .then((res) => res.json())
-      .then((categories) => {
-        console.log(categories);
-        setCategories(categories);
-      })
-      .catch((err) => console.log(`Error ${err}`));
+    .then((res) => res.json())
+    .then((categories) => {
+      setCategories(categories);
+    })
+    .catch((err) => console.log(`Error ${err}`));
 
 
-      fetch("/bestsellers")
-      .then((res) => res.json())
-      .then((bestSeller) => {
-        console.log(bestSeller);
-        setBestSeller(bestSeller);
-      })
-      .catch((err) => console.log(`Error ${err}`));
+    fetch("/allServices")
+    .then((res) => res.json())
+    .then((response) => {
+      setServices(response);
+      const bestsellersFilter = response.filter(obj => {return obj.bestseller === 'Y'});
+      setBestSeller(bestsellersFilter);
+    })
+    .catch((err) => console.log(`Error ${err}`));
 
-      fetch("/categories/6/services")
-      .then((res) => res.json())
-      .then((flooring) => {
-        console.log(flooring);
-        setFlooring(flooring);
-      })
-      .catch((err) => console.log(`Error ${err}`));
+    const existingToken = localStorage.getItem('token');
 
-      // fetch("/categories/10/services")
-      // .then((res) => res.json())
-      // .then((moving) => {
-      //   console.log(moving);
-      //   setMovingStorage(moving);
-      // })
-      // .catch((err) => console.log(`Error ${err}`));
+    existingTokenCheck(existingToken);
 
-      // fetch("/categories/4/services")
-      // .then((res) => res.json())
-      // .then((decorators) => {
-      //   console.log(decorators);
-      //   setDecoratorsDesigners(decorators);
-      // })
-      // .catch((err) => console.log(`Error ${err}`));
+    const localCartItems = JSON.parse(localStorage.getItem("cartitems") || "[]");
+    let totalAmount = 0; 
+    localCartItems.forEach((item, index) => {
+        totalAmount = totalAmount + (parseInt(item.servicePrice));
+    });
 
-      // fetch("/categories/2/services")
-      // .then((res) => res.json())
-      // .then((cleaning) => {
-      //   console.log(cleaning);
-      //   setCleaning(cleaning);
-      // })
-      // .catch((err) => console.log(`Error ${err}`));
+    setCartTotal(parseFloat(cartTotal) + totalAmount);
+    setCart(localCartItems);
+
 
   }, []);
 
+  const existingTokenCheck = (existingToken) => {
+    if(existingToken){
+      fetch('/verifyToken', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({token: existingToken})
+      }).then(function(res) {
+        return res.json();
+      }).then(function(data){
+        if(data.result){
+          data.user.token = existingToken;
+          setUser(data.user);
+          fetch("/userData?userId="+data.user.userId)
+          .then((res) => res.json())
+          .then((response) => {
+            setUserData(response);
+      
+          })
+          .catch((err) => console.log(`Error ${err}`));
+        }
+      });
+    }
+  }
+
+  const setCartItems = (item) => {
+    let setCartItems = []
+    if(cartItems.length){
+      setCartItems = cartItems;
+    }
+
+    setCartItems.push(item);
+
+    
+    localStorage.setItem("cartitems", JSON.stringify(setCartItems))
+    setCart(setCartItems);
+  }
+
+  const clearCart = () => {
+    setCart([]);
+    setCartTotal(0);
+  }
+
   return (
     <div id="main-container">
-      <BookAProContext.Provider value={{ categories, bestseller, flooring }}>
+      <BookAProContext.Provider value={{ categories, bestseller, services, user, setUser, userData, cartItems, setCartItems, cartTotal, setCartTotal, clearCart}}>
         <Router>
           <Header />
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route path="/login">
-              <Login />
-            </Route>
-            <Route path="/registration">
-              <Registration />
-            </Route>
-            <Route path="/all-categories">
-              <AllCategories />
-            </Route>
-            <Route path="/categories/:id/services">
-              <Listings />
-            </Route>
+          <ScrollToTop>
+            <Switch>
+              <Route exact path="/">
+                <Home />
+              </Route>
+              <Route path="/adminDashboard">
+                {(user.token && user.role == 0)
+                ? <Admin />
+                : <Redirect to="/admin" />
+                }
+              </Route>
+              <Route path="/providerDashboard">
+                {(user.token && user.role == 1)
+                ? <Provider />
+                : <Redirect to="/providerLogin" />
+                }
+              </Route>
+              <Route path="/dashboard">
+                {user.token && user.role == 2
+                ? <User />
+                : <Redirect to="/login" />
+                }
+              </Route>
+              <Route path="/login">
+                {(user.token && user.role == 2)
+                ? <Redirect to="/dashboard" />
+                : <Login />
+                }
+              </Route>
+              <Route path="/providerLogin">
+                {(user.token && user.role == 1)
+                ? <Redirect to="/providerDashboard" />
+                : <ProviderLogin />
+                }
+              </Route>
+              <Route path="/admin">
+                {(user.token && user.role == 0)
+                ? <Redirect to="/adminDashboard" />
+                : <AdminLogin />
+                }
+              </Route>
+              <Route path="/registration">
+                {(user.token && user.role == 2)
+                ? <Redirect to="/dashboard" />
+                : <Registration />
+                }
+              </Route>
+              <Route path="/all-categories">
+                <AllCategories />
+              </Route>
+              <Route path="/categories/:id/services">
+                <Listings />
+              </Route>
 
-            <Route path="/services/:serviceId">
-              <Single />
-            </Route>
+              <Route path="/services/:serviceId">
+                <Single />
+              </Route>
 
-            <Route path="/about">
-              <About />
-            </Route>
+              <Route path="/about">
+                <About />
+              </Route>
 
-            <Route path="/terms">
-              <Terms />
-            </Route>
+              <Route path="/terms">
+                <Terms />
+              </Route>
 
-            <Route path="/privacy">
-              <Privacy />
-            </Route>
+              <Route path="/privacy">
+                <Privacy />
+              </Route>
 
-            <Route path="/blogs">
-              <Blogs />
-            </Route>
+              <Route path="/blogs">
+                <Blogs />
+              </Route>
 
-            <Route path="/contact">
-              <Contact />
-            </Route>
+              <Route path="/contact">
+                <Contact />
+              </Route>
 
 
-            <Route path="/cart">
-              <Cart />
-            </Route>
+              <Route path="/cart">
+                <Cart />
+              </Route>
 
-            <Route path="/checkout">
-              <Checkout />
-            </Route>
+              <Route path="/checkout">
+                <Checkout />
+              </Route>
 
-            <Route path="/blog">
-              <Blog />
-            </Route>
+              <Route path="/blog">
+                <Blog />
+              </Route>
 
-           
+              <Route path="/category/:cat">
+                <Listings />
+              </Route>
 
-          </Switch>
-
+            </Switch>
+          </ScrollToTop>
           <Footer />
         </Router>
       </BookAProContext.Provider>

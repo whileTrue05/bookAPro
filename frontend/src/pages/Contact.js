@@ -5,7 +5,7 @@ import illustration2 from '../assets/svg/illustrations/chatting-man.svg';
 
 const Contact = () => {
   return (
-    <div>
+    <div className="space-0 space-lg-3">
 
 
 <div class="bg-light position-relative">

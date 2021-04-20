@@ -6,7 +6,7 @@ const Terms = () => {
 
 
     return (
-        <div>
+        <div className="space-0 space-lg-3">
             <SubHero title="Terms & Conditions" subtitle="Please read carefully." />
             <div class="container space-2 space-bottom-lg-3">
       <div class="row">

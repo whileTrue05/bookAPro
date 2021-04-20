@@ -1,6 +1,10 @@
+import { Link } from 'react-router-dom';
+import {useContext} from 'react';
 import logo from '../../assets/svg/logos/logo.svg';
+import bookAProContext from '../Context/BookAProContextProvider';
 
 const Header = () => {
+    const userContext = useContext(bookAProContext);
     return (
         <div id="footer-container">
             <div className="bg-dark">
@@ -112,12 +116,18 @@ const Header = () => {
                                         </a>
                                     </li>
                                     <li className="nav-item">
-                                        <a className="nav-link" href="#">
+                                        <Link className="nav-link" to="/login">
                                             <span className="media align-items-center">
                                                 <i className="fa fa-user-circle mr-2"></i>
-                                                <span className="media-body">Your Account</span>
+                                                <span className="media-body">{(userContext.user.token && userContext.user.role == 2) ? 'Your Account' : 'User Sign In'}</span>
                                             </span>
-                                        </a>
+                                        </Link>
+                                        <Link className="nav-link" to="/providerLogin">
+                                            <span className="media align-items-center">
+                                                <i className="fa fa-user-circle mr-2"></i>
+                                                <span className="media-body">{(userContext.user.token && userContext.user.role == 1) ? 'Your Account' : 'Service Provider Sign In'}</span>
+                                            </span>
+                                        </Link>
                                     </li>
                                 </ul>
                             </div>

@@ -5,7 +5,11 @@ import cat4 from "../../../assets/img/900x900/img18.jpg";
 import { Link } from "react-router-dom";
 import CategoryItem from "./CategoryItem"
 const Categories = (props) => {
-  //   console.log(`checking out categories: ${categories}`);
+  const categories = props.categories.filter((category, index) => {
+    if(index <4){
+      return category;
+    }
+  });
 
   return (
     <div className="container pb-4">
@@ -14,7 +18,7 @@ const Categories = (props) => {
       </h2>
      
       <div className="row">
-      {props.categories.map((category)=>(<CategoryItem key={category.categoryId} id={category.categoryId} categoryName={category.name} categoryImage={category.image}/>))}
+      {categories.map((category)=>(<CategoryItem key={category.categoryId} id={category.categoryId} categoryName={category.name} categoryDescription={category.description} categoryImage={category.image}/>))}
       </div>
     </div>
   );
