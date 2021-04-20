@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const BookAProController = require("../Model/BookAProModel");
 const privateKey = 'bookAshhhhhPro';
 
-var HTTP_PORT = process.env.PORT || 8080;
+var HTTP_PORT = process.env.PORT || 8878;
 
 BookAProController.initialize()
   .then(() => {

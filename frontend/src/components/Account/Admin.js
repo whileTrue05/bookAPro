@@ -126,7 +126,7 @@ const User = () => {
   const submitCategoryCreateForm = (event) => {
     event.preventDefault();
     if (validateCategoryCreation()) {
-      fetch('/createCategory', {
+      fetch('https://whiletrue-bookapro.herokuapp.com:8878/createCategory', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -154,7 +154,7 @@ const User = () => {
   const submitCreateForm = (event) => {
     event.preventDefault();
     if (validateCreation()) {
-      fetch('/createService', {
+      fetch('https://whiletrue-bookapro.herokuapp.com:8878/createService', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -195,7 +195,7 @@ const User = () => {
   }, []);
 
   const fetchAdminData = () => {
-    fetch("/adminData?userId=" + userContext.user.userId)
+    fetch("https://whiletrue-bookapro.herokuapp.com:8878/adminData?userId=" + userContext.user.userId)
       .then((res) => res.json())
       .then((response) => {
         setProviderData(response[0]);
@@ -247,7 +247,7 @@ const User = () => {
   const submitForm = (event) => {
     event.preventDefault();
     if (validateSignUp()) {
-        fetch('/createUser', {
+        fetch('https://whiletrue-bookapro.herokuapp.com:8878/createUser', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

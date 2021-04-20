@@ -35,7 +35,7 @@ const Login = () => {
     const submitForm = (event) => {
         event.preventDefault();
         if (validateSignUp()){
-            fetch('/login', {
+            fetch('https://whiletrue-bookapro.herokuapp.com:8878/login', {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json'

@@ -49,7 +49,7 @@ function App() {
   // const {id} = useParams();
   
   useEffect(() => {
-    fetch("/categories")
+    fetch("https://whiletrue-bookapro.herokuapp.com:8878/categories")
     .then((res) => res.json())
     .then((categories) => {
       setCategories(categories);
@@ -57,7 +57,7 @@ function App() {
     .catch((err) => console.log(`Error ${err}`));
 
 
-    fetch("/allServices")
+    fetch("https://whiletrue-bookapro.herokuapp.com:8878/allServices")
     .then((res) => res.json())
     .then((response) => {
       setServices(response);
@@ -84,7 +84,7 @@ function App() {
 
   const existingTokenCheck = (existingToken) => {
     if(existingToken){
-      fetch('/verifyToken', {
+      fetch('https://whiletrue-bookapro.herokuapp.com:8878/verifyToken', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -96,7 +96,7 @@ function App() {
         if(data.result){
           data.user.token = existingToken;
           setUser(data.user);
-          fetch("/userData?userId="+data.user.userId)
+          fetch("https://whiletrue-bookapro.herokuapp.com:8878/userData?userId="+data.user.userId)
           .then((res) => res.json())
           .then((response) => {
             setUserData(response);

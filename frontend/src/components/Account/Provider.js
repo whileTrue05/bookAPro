@@ -87,7 +87,7 @@ const User = () => {
   const submitCreateForm = (event) => {
     event.preventDefault();
     if(validateCreation()){
-      fetch('/createService', {
+      fetch('https://whiletrue-bookapro.herokuapp.com:8878/createService', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -128,7 +128,7 @@ const User = () => {
   }, []);
 
   const fetchProviderData = () => {
-    fetch("/providerData?userId="+userContext.user.userId)
+    fetch("https://whiletrue-bookapro.herokuapp.com:8878/providerData?userId="+userContext.user.userId)
     .then((res) => res.json())
     .then((response) => {
       setProviderData(response[0]);

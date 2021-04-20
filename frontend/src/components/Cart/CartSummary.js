@@ -12,7 +12,7 @@ const CartSummary = (props) => {
     e.preventDefault();
       e.stopPropagation();
     if(user.userId > 0){
-      fetch('/createReservation', {
+      fetch('https://whiletrue-bookapro.herokuapp.com:8878/createReservation', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

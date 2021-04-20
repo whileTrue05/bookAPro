@@ -47,7 +47,7 @@ const Registration = () => {
     const submitForm = (event) => {
         event.preventDefault();
         if (validateSignUp()) {
-            fetch('/createUser', {
+            fetch('https://whiletrue-bookapro.herokuapp.com:8878/createUser', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
