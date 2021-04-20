@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import {useContext} from 'react';
-import logo from '../../assets/svg/logos/logo.svg';
+import { useContext } from 'react';
+import logo from '../../assets/svg/logos/logo.png';
 import bookAProContext from '../Context/BookAProContextProvider';
 
 const Header = () => {
@@ -11,7 +11,7 @@ const Header = () => {
                 <div className="container space-top-2">
                     <div className="row justify-content-md-between mb-6">
                         <div className="col-md-6 col-lg-5 mb-3 mb-md-0">
-                            <h2 className="text-white font-weight-normal">Subscribe to get the latest from Front</h2>
+                            <h2 className="text-white font-weight-normal">Subscribe to get the latest from BookAPro</h2>
                         </div>
 
                         <div className="col-md-6">
@@ -37,11 +37,11 @@ const Header = () => {
                 <div className="container">
                     <div className="space-top-2 space-bottom-1 space-bottom-lg-2">
                         <div className="row justify-content-lg-between">
-                            <div className="col-lg-3 ml-lg-auto mb-5 mb-lg-0">
+                            <div className="col-6 col-md-4 col-lg-4 ml-lg-auto mb-5 mb-lg-0">
                                 <div className="mb-4">
-                                    <a href="#" aria-label="Front">
+                                    <Link to="/" aria-label="Front">
                                         <img className="brand" src={logo} alt="Logo" />
-                                    </a>
+                                    </Link>
                                 </div>
 
                                 <ul className="nav nav-sm nav-x-0 nav-white flex-column">
@@ -50,7 +50,7 @@ const Header = () => {
                                             <span className="media">
                                                 <span className="fas fa-location-arrow mt-1 mr-2"></span>
                                                 <span className="media-body">
-                                                    153 Williamson Plaza, Maggieberg
+                                                    Toronto, Canada
                   </span>
                                             </span>
                                         </a>
@@ -60,7 +60,7 @@ const Header = () => {
                                             <span className="media">
                                                 <span className="fas fa-phone-alt mt-1 mr-2"></span>
                                                 <span className="media-body">
-                                                    +1 (062) 109-9222
+                                                    +1 (613) 877-07X0
                   </span>
                                             </span>
                                         </a>
@@ -68,42 +68,18 @@ const Header = () => {
                                 </ul>
                             </div>
 
-                            <div className="col-6 col-md-3 col-lg mb-5 mb-lg-0">
+                            <div className="col-6 col-md-4 col-lg-4 mb-5 mb-lg-0">
                                 <h5 className="text-white">Company</h5>
 
                                 <ul className="nav nav-sm nav-x-0 nav-white flex-column">
-                                    <li className="nav-item"><a className="nav-link" href="/about">About</a></li>
-                                    <li className="nav-item"><a className="nav-link" href="#">Careers <span className="badge badge-primary ml-1">We're hiring</span></a></li>
-                                    <li className="nav-item"><a className="nav-link" href="/blogs">Blog</a></li>
-                                    <li className="nav-item"><a className="nav-link" href="#">Customers</a></li>
-                                    <li className="nav-item"><a className="nav-link" href="#">Hire us</a></li>
+                                    <li className="nav-item"><Link className="nav-link" to="/about">About</Link></li>
+                                    <li className="nav-item"><Link className="nav-link" to="/blogs">Blogs</Link></li>
+                                    <li className="nav-item"><Link className="nav-link" to="/contact">Contact Us</Link></li>
                                 </ul>
                             </div>
 
-                            <div className="col-6 col-md-3 col-lg mb-5 mb-lg-0">
-                                <h5 className="text-white">Features</h5>
 
-                                <ul className="nav nav-sm nav-x-0 nav-white flex-column">
-                                    <li className="nav-item"><a className="nav-link" href="#">Press</a></li>
-                                    <li className="nav-item"><a className="nav-link" href="#">Release notes</a></li>
-                                    <li className="nav-item"><a className="nav-link" href="#">Integrations</a></li>
-                                    <li className="nav-item"><a className="nav-link" href="#">Pricing</a></li>
-                                </ul>
-                            </div>
-
-                            <div className="col-6 col-md-3 col-lg">
-                                <h5 className="text-white">Documentation</h5>
-
-                                <ul className="nav nav-sm nav-x-0 nav-white flex-column">
-                                    <li className="nav-item"><a className="nav-link" href="/contact">Support</a></li>
-                                    <li className="nav-item"><a className="nav-link" href="#">Docs</a></li>
-                                    <li className="nav-item"><a className="nav-link" href="#">Status</a></li>
-                                    <li className="nav-item"><a className="nav-link" href="#">API Reference</a></li>
-                                    <li className="nav-item"><a className="nav-link" href="#">Tech Requirements</a></li>
-                                </ul>
-                            </div>
-
-                            <div className="col-6 col-md-3 col-lg">
+                            <div className="col-6 col-md-4 col-lg-4">
                                 <h5 className="text-white">Resources</h5>
 
                                 <ul className="nav nav-sm nav-x-0 nav-white flex-column">
@@ -177,13 +153,13 @@ const Header = () => {
                                         </a>
                                     </li>
 
-                                    
+
                                 </ul>
                             </div>
                         </div>
 
                         <div className="w-md-100 mx-lg-auto">
-                            <p className="text-white opacity-sm small">© Front. 2020 Htmlstream. All rights reserved.</p>
+                            <p className="text-white opacity-sm small">© BookAPro. 2021 . All rights reserved.</p>
                         </div>
                     </div>
                 </div>

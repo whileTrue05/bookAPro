@@ -1,4 +1,4 @@
-import logo from '../../assets/svg/logos/logo.svg';
+import logo from '../../assets/svg/logos/logo.png';
 import { Link } from 'react-router-dom';
 import Navigation from './Navigation';
 import { useState, useContext } from "react";
@@ -32,7 +32,7 @@ const Header = () => {
   const userContext = useContext(BookAProContext);
   const categories = userContext.categories;
   return (
-    <header id="header" className="header header-sticky-top-lg">
+    <header id="header" className="header header-sticky-top-lg border-bottom">
       <div className="header-section">
         <div id="logoAndNav" className="container">
 
