@@ -7,7 +7,7 @@ import BlogImg3 from '../assets/img/500x280/img5.jpg';
 
 const Blogs = () => {
   return (
-    <div>
+    <div className="space-0 space-lg-3">
       <SubHero title="Blogs" subtitle="Our latest updates and hand-picked resources." />
       <div class="container space-top-md-2 space-bottom-2 space-bottom-lg-3">
         <div class="row mb-3">

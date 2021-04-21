@@ -1,6 +1,7 @@
 import productImage from '../../assets/img/300x180/img3.jpg';
 import { Link, useParams } from 'react-router-dom'
-import React, { useState, useEffect } from "react";
+import BookAProContext from "../Context/BookAProContextProvider";
+import React, { useState, useEffect, useContext } from "react";
 import SingleServiceDetails from './SingleServiceDetail'
 
 const Single = () => {
@@ -10,19 +11,14 @@ const Single = () => {
    
    
    
-
+  let {services} = useContext(BookAProContext);
+  services = services.filter((object)=> {return object.serviceId == serviceId});
+  
+  
    useEffect(() => {
-       console.log("The serviceID received is: "+serviceId)
-    console.log("Entered the useEffect block in SINGLE.JS");
-    fetch("/services/"+serviceId)
-      .then((res) => res.json())
-      .then((serviceDetails) => {
-        console.log(serviceDetails);
-        setServiceDetail(serviceDetails)
+        setServiceDetail(services)
         
-      })
-      .catch((err) => console.log(`Error ${err}`));
-  }, []);
+  }, [services]);
 
 
   
@@ -30,7 +26,7 @@ const Single = () => {
 
     return (
         <>
-            {serviceDetail.map((serviceDetail)=>(<SingleServiceDetails key={serviceDetail.serviceId} id={serviceDetail.serviceId} serviceName={serviceDetail.name} servicePrice={serviceDetail.pricePerHour} serviceDescription={serviceDetail.description} serviceImage={serviceDetail.image}/>))}
+            {serviceDetail.map((serviceDetail)=>(<SingleServiceDetails key={serviceDetail.serviceId} id={serviceDetail.serviceId} serviceName={serviceDetail.name} servicePrice={serviceDetail.pricePerHour} serviceDescription={serviceDetail.description} serviceImage={serviceDetail.image} providerId={serviceDetail.userId}/>))}
         </>
     )
 }

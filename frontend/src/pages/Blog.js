@@ -5,7 +5,7 @@ import BlogImg1 from '../assets/img/500x280/img3.jpg';
 
 const Blog = () => {
   return (
-    <div>
+    <div className="space-0 space-lg-3">
       <SubHero blogImg={BlogImg1} />
       <div class="container space-top-3 space-bottom-2">
       <div class="w-lg-60 mx-lg-auto">

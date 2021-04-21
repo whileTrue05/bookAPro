@@ -10,6 +10,8 @@ const Login = () => {
     const [errorPassword, setErrorPassword] = useState("");
     const [errorLogin, setErrorLogin] = useState("");
 
+    
+
     const validateSignUp = () => {
 
         let isValidated = true;
@@ -40,19 +42,18 @@ const Login = () => {
                 headers: {
                   'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({email: email, password: password, role: 2})
-            }).then(function(res) {
+                body: JSON.stringify({email: email, password: password, role: 0})
+              }).then(function(res) {
                 return res.json();
-            }).then(function(res){
+              }).then(function(res){
                 if(res.result){
                     res.data[0].token = res.token;
                     localStorage.setItem('token', res.token);
                     userContext.setUser(res.data[0]);
-                    window.location.reload();
                 }else{
                     setErrorLogin(res.message)
                 }
-            });
+              });
 
         }
     }
@@ -61,7 +62,7 @@ const Login = () => {
         <div className="container space-2 space-lg-4">
             <form className="js-validate w-md-75 w-lg-50 mx-md-auto" noValidate="novalidate" onSubmit={submitForm}>
                 <div className="mb-5 mb-md-7">
-                    <h1 className="h2 mb-0">Welcome back user</h1>
+                    <h1 className="h2 mb-0">Welcome back admin</h1>
                     <p>Login to manage your account.</p>
                 </div>
 
@@ -84,21 +85,19 @@ const Login = () => {
                     }} />
                     <span style={{ color: "red" }}>{errorPassword}</span>
                 </div>
+                
 
-                {errorLogin && 
-                    <div class="alert alert-soft-danger alert-dismissable" role="alert">
-                        {errorLogin}
-                    </div>
-                }
+                <div className="row mb-5">
+                    <div className="col-12 col-md-9">
+                        {errorLogin && 
+                            <div class="alert alert-soft-danger alert-dismissable" role="alert">
+                                {errorLogin}
+                            </div>
+                        }
                         
-
-                <div className="row align-items-center mb-5">
-                    <div className="col-sm-6 mb-3 mb-sm-0">
-                        <span className="font-size-1 text-muted">Don't have an account? </span>
-                        <Link to="/registration" className="font-size-1 font-weight-bold ml-2" href="#!">Signup</Link>
                     </div>
 
-                    <div className="col-sm-6 text-sm-right">
+                    <div className="col-12 col-md-3 text-sm-right">
                         <button type="submit" className="btn btn-primary transition-3d-hover">Login</button>
                     </div>
                 </div>

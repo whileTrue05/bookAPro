@@ -1,9 +1,13 @@
-import logo from '../../assets/svg/logos/logo.svg';
+import logo from '../../assets/svg/logos/logo.png';
 import { Link } from 'react-router-dom';
 import Navigation from './Navigation';
+import { useState, useContext } from "react";
+import BookAProContext from "../Context/BookAProContextProvider";
+
 
 
 const searchValidation = (e) => {
+
   let searchVal = document.getElementById('searchField');
   if(searchVal.value == ''){
     alert('Search query cannot be empty');
@@ -18,12 +22,17 @@ const searchValidation = (e) => {
     e.preventDefault();
     e.stopPropagation();
   }
+
+
   
 }
 
 const Header = () => {
+  const [searchKeyword, setSearchKeyword] = useState('');
+  const userContext = useContext(BookAProContext);
+  const categories = userContext.categories;
   return (
-    <header id="header" className="header header-sticky-top-lg">
+    <header id="header" className="header header-sticky-top-lg border-bottom">
       <div className="header-section">
         <div id="logoAndNav" className="container">
 
@@ -38,13 +47,13 @@ const Header = () => {
                 <ul className="navbar-nav flex-row align-items-center">
 
                   <li className="dropdown navbar-nav-item show">
-                    <Link to="/login" id="blogMegaMenu" className="nav-link mx-3 text-primary text-center" href="#!" role="button">Hello,<br />Sign In</Link>
+                    <Link to={(userContext.user.role == 1 ? "/providerLogin" : (userContext.user.role == 0 ? "/admin" :"/login"))} id="blogMegaMenu" className="nav-link mx-3 text-primary text-center" href="#!" role="button">Hello,<br />{userContext.user.token ? userContext.user.fname+' '+userContext.user.lname : 'Sign In'}</Link>
                   </li>
 
                   <li>
-                    <a className="btn btn-soft-dark btn-icon btn-smtransition-3d-hover" href="#!">
+                    <Link className="btn btn-soft-dark btn-icon btn-smtransition-3d-hover" to="/cart">
                       <i className="fas fa-lg fa-shopping-cart"></i>
-                    </a>
+                    </Link>
                   </li>
 
                 </ul>
@@ -81,21 +90,14 @@ const Header = () => {
                             </div>
                           </div>
 
-                          <input type="text" className="form-control" name="buyAddress" placeholder="Search here..." aria-label="search-field" />
+                          <input type="text" className="form-control" id="searchField" name="buyAddress" placeholder="Search here..." aria-label="search-field" onChange={(event)=>{
+                            setSearchKeyword(event.target.value);
+                          }} />
                         </div>
                       </div>
 
-                      <div className="col-sm-auto input-group-flush pr-3">
-                        <select id="exampleFormControlSelect1" className="form-control " defaultValue={{label: "All", value: 0}} style={{ border:0, textAlignLast: 'right' }}>
-                          <option value="0">All</option>
-                          <option>Shirts</option>
-                          <option>Jeans</option>
-                          <option>Electronics</option>
-                          <option>Appliances</option>
-                        </select>
-                      </div>
                       <div className="input-group-append">
-                        <Link to="/listings" type="submit" className="rounded-0 btn btn-block btn-primary" onClick={searchValidation}>Search</Link>
+                        <Link to={"/category/"+searchKeyword} type="submit" className="rounded-0 btn btn-block btn-primary" onClick={searchValidation}>Search</Link>
                       </div>
                     </div>
                   </div>

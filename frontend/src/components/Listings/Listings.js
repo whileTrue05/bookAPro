@@ -4,44 +4,47 @@ import productImage from '../../assets/img/300x180/img3.jpg';
 import { Link, useParams } from 'react-router-dom'
 import { useContext } from "react";
 import BookAProContext from "../Context/BookAProContextProvider";
-import React, { useState, useEffect } from "react";
-import ServiceList from "./ServiceList"
+import React, { useState } from "react";
+import ServiceItem from "./ServiceItem"
+
 
 const Listings = () => {
 
 
-    //  const {services} = useContext(BookAProContext)
-    const [services, setServices] = useState([]);
-   const {id} = useParams();
+    const userContext = useContext(BookAProContext);
+    let services = userContext.services;
+    const { cat } = useParams();
 
-   useEffect(() => {
-    // console.log("Entered the useEffect block in Listings.JS");
-    fetch("/categories/"+id+"/services")
-      .then((res) => res.json())
-      .then((services) => {
-        console.log(`Services for each service category ${services}`);
-        setServices(services);
-      })
-      .catch((err) => console.log(`Error ${err}`));
-  }, []);
+    if(isNaN(cat)){
+        if(cat == 'bestsellers'){
+            services = services.filter((object)=> {return object.bestseller === 'Y'});
+        }else if(cat == 'all'){
+            services = services;
+        }else{
+            services = services.filter((object)=> {return object.name.toLowerCase().indexOf(cat.toLowerCase()) > -1});
+        }
+    }else{
 
+        services = services.filter((object)=> {return object.categoryId == cat});
+    }
 
 
 
     return (
-        <div className="container space-2 space-lg-4">
+        <div className="container space-0 space-lg-4">
             <div className="row">
                 <div className="col-lg-3 mb-5 mb-lg-0">
                     <ListingSidebar />
                 </div>
-                
+
                 <div className="col-lg-9 mb-5 mb-lg-0">
-                    
-                    
-                        <ServiceList services={services}/>
-                    
-                    
+
+                    <div className="row">
+                            {services.map((service)=>(<ServiceItem key={service.serviceId} serviceData={service}/>))}
                     </div>
+
+
+                </div>
             </div>
         </div>
     )

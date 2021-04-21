@@ -6,7 +6,7 @@ const About = () => {
 
 
     return (
-        <div>
+        <div className="space-0 space-lg-3">
             <SubHero title="About Us" subtitle="A brief introduction about our company" />
             <div class="container space-2 space-bottom-lg-3">
       <div class="row">

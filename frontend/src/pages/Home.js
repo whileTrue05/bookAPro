@@ -7,10 +7,13 @@ import BookAProContext from "../components/Context/BookAProContextProvider";
 const Home = () => {
   const { categories } = useContext(BookAProContext);
   const { bestseller } = useContext(BookAProContext);
+  const { services } = useContext(BookAProContext);
+
+  
   
   return (
     <div id="home-container">
-      <Hero />
+      <Hero services={services} />
 
       <CategoryList categories={categories} />
 

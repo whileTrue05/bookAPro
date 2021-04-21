@@ -1,51 +1,34 @@
 import { Link } from 'react-router-dom';
 import { BrowserRouter as Router, Switch, Route, useParams } from "react-router-dom";
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import ServiceList from "../Listings/ServiceList"
+import BookAProContext from "../Context/BookAProContextProvider";
+
+const searchValidation = (e) => {
+
+  let searchVal = document.getElementById('searchField');
+  if(searchVal.value == ''){
+    alert('Search query cannot be empty');
+    searchVal.focus();
+    e.preventDefault();
+    e.stopPropagation();
+  }
+
+  if(!searchVal.value.match(/^[^<>!$'\"/;`%]*$/)){
+    alert('Search query cannot contain special characters.')
+    searchVal.focus();
+    e.preventDefault();
+    e.stopPropagation();
+  }
+
+
+  
+}
 
 const Navigation = () => {
-
-  const [flooring, setFlooring] = useState([]);
-  const [movingStorage, setMovingStorage] = useState([]);
-  const [decoratorsDesigners, setDecoratorsDesigners] = useState([]);
-  const [cleaning, setCleaning] = useState([]);
-  useEffect(() => {
-    console.log("Entered the useEffect block");
-    fetch("/categories/6/services")
-      .then((res) => res.json())
-      .then((flooring) => {
-        console.log(flooring);
-        setFlooring(flooring);
-      })
-      .catch((err) => console.log(`Error ${err}`));
-
-      fetch("/categories/10/services")
-      .then((res) => res.json())
-      .then((moving) => {
-        console.log(moving);
-        setMovingStorage(moving);
-      })
-      .catch((err) => console.log(`Error ${err}`));
-
-      fetch("/categories/4/services")
-      .then((res) => res.json())
-      .then((decorators) => {
-        console.log(decorators);
-        setDecoratorsDesigners(decorators);
-      })
-      .catch((err) => console.log(`Error ${err}`));
-
-      fetch("/categories/2/services")
-      .then((res) => res.json())
-      .then((cleaning) => {
-        console.log(cleaning);
-        setCleaning(cleaning);
-      })
-      .catch((err) => console.log(`Error ${err}`));
-
-  }, []);
-
-
+  const [searchKeyword, setSearchKeyword] = useState('');
+  const userContext = useContext(BookAProContext);
+  const categories = userContext.categories;
 
 
     return (
@@ -62,47 +45,41 @@ const Navigation = () => {
                             </div>
                           </div>
 
-                          <input type="text" className="form-control" name="buyAddress" placeholder="Search here..." aria-label="Search here..." />
+                          <input type="text" className="form-control" id="searchField" name="buyAddress" placeholder="Search here..." aria-label="Search here..." onChange={(event)=>{
+                            setSearchKeyword(event.target.value);
+                          }} />
                         </div>
                       </div>
 
-                      <div className="col-sm-auto input-group-flush pr-3">
-                        <select id="exampleFormControlSelect1" className="form-control " defaultValue={{label: "All", value: 0}} style={{ border:0, textAlignLast: 'right' }}>
-                          <option value="0">All</option>
-                          <option>Shirts</option>
-                          <option>Jeans</option>
-                          <option>Electronics</option>
-                          <option>Appliances</option>
-                        </select>
-                      </div>
                       <div className="input-group-append">
-                        <Link to="/listings" type="submit" className="rounded-0 btn btn-block btn-primary">Search</Link>
+                        <Link to={"/category/"+searchKeyword} type="submit" className="rounded-0 btn btn-block btn-primary" onClick={searchValidation}>Search</Link>
                       </div>
                     </div>
                   </div>
                 </div>
             </div>
             <div className="container d-md-flex align-items-center">
-              
-                <Link className="dropdown-nav-link d-block" to="/bestsellers">
+
+                <Link className="dropdown-nav-link d-block" href="#!" to="/category/bestsellers">
                     Bestsellers
                 </Link>
-                <Link className="dropdown-nav-link ml-0 ml-md-4 mt-2 mt-md-0 d-block" to="/categories/6/services">
-                    Flooring
-                   
-                </Link>
-                <Link className="dropdown-nav-link ml-0 ml-md-4 mt-2 mt-md-0 d-block"  to="/categories/10/services">
-                    Moving & Storage
+
+                {categories.map((item, index) => {
+                  if(index <= 4){
                     
+                    return (
+                      <Link className="dropdown-nav-link ml-0 ml-md-4 mt-2 mt-md-0 d-block" href="#!" to={"/category/"+item.categoryId}>
+                        {item.name}
+                      </Link>
+                    )
+                  }
+                })}
+
+                <Link className="dropdown-nav-link ml-0 ml-md-4 mt-2 mt-md-0 d-block" href="#!" to="/category/all">
+                    All
                 </Link>
-                <Link className="dropdown-nav-link ml-0 ml-md-4 mt-2 mt-md-0 d-block"  to="/categories/4/services">
-                    Decorators & Designers
-                    
-                </Link>
-                <Link className="dropdown-nav-link ml-0 ml-md-4 mt-2 mt-md-0 d-block" to="/categories/2/services">
-                    Cleaning
-                   
-                </Link>
+              
+                
             </div>
         </div>
     );

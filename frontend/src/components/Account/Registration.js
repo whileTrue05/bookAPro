@@ -1,3 +1,4 @@
+
 import { Link } from 'react-router-dom';
 import { useState } from 'react'
 
@@ -20,64 +21,89 @@ const Registration = () => {
         if (name === "") {
             setErrorName("! Please enter your name");
             isValidated = false;
-        }
-
-
-        else {
+        } else {
             setErrorName("")
         }
+
         if (email === "") {
             setErrorEmail("! Enter Your Email");
             isValidated = false;
-        }
-
-
-        else {
+        } else {
             setErrorEmail("")
         }
 
         if (password === "") {
             setErrorPassword("! Enter Your Password");
             isValidated = false;
-        }
-
-
-        else {
+        } else {
             setErrorPassword("")
         }
-
 
         return isValidated;
 
     }
     const handleChange = ({ target: { name, value } }) => setEmail((prev) => ({ ...prev }, [name], value))
 
+    const submitForm = (event) => {
+        event.preventDefault();
+        if (validateSignUp()) {
+            fetch('https://whiletrue-bookapro.herokuapp.com:8878/createUser', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    fname: name,
+                    email: email,
+                    password: password
+                })
+            }).then(function (res) {
+                return res.json();
+            }).then(function (res) {
+                if (res.result) {
+                    localStorage.setItem('token', res.token);
+                    window.location.reload();
+                } else {
+                    alert(res.message.message)
+                }
+            });
+
+        }
+    }
+
     return (
-        <div className="container space-2 space-lg-4">
-            <form className="js-validate w-md-75 w-lg-50 mx-md-auto" noValidate="novalidate" action="/users/add" method="POST">
+        <div className="container space-top-1 space-top-md-2 space-bottom-2 space-bottom-lg-3">
+            <form className="js-validate w-md-75 w-lg-50 mx-md-auto" noValidate="novalidate" onSubmit={submitForm}>
                 <div className="mb-5 mb-md-7">
                     <h1 className="h2 mb-0">Welcome to Front</h1>
                     <p>Fill out the form to get started.</p>
                 </div>
 
                 <div className="js-form-message form-group">
-                    <label className="input-label" htmlFor="signupNamme">First name</label>
-                    <input type="text" className="form-control" name="fname" id="signupNamme" placeholder="Your first name" aria-label="Your first name" required="" data-msg="Please enter a valid name." />
-                </div>
+                    <label className="input-label" htmlFor="signupNamme">Your name</label>
+                    <input type="text" className="form-control" name="name" id="signupNamme" placeholder="Your full name" aria-label="Your full name" required="" data-msg="Please enter a valid name." onChange={(event) => {
 
-                <div className="js-form-message form-group">
-                    <label className="input-label" htmlFor="signupNamme">Last name</label>
-                    <input type="text" className="form-control" name="lname" id="signupNamme" placeholder="Your last name" aria-label="Your last name" required="" data-msg="Please enter a valid name." />
-                </div>
+                        setName(event.target.value);
+                    }} />
+                    <span style={{ color: "red" }}>{errorName}</span><br />        </div>
 
                 <div className="js-form-message form-group">
                     <label className="input-label" htmlFor="signinSrEmail">Email address</label>
-                    <input type="email" className="form-control" name="email" id="signinSrEmail" placeholder="Email address" aria-label="Email address" required="" data-msg="Please enter a valid email address." />
+                    <input type="email" className="form-control" name="email" id="signinSrEmail" placeholder="Email address" aria-label="Email address" required="" data-msg="Please enter a valid email address." onChange={(event) => {
+
+                        setEmail(event.target.value);
+                    }} />
+
+                    <span style={{ color: "red" }}>{errorEmail}</span><br />
                 </div>
 
                 <div className="js-form-message form-group">
                     <label className="input-label" htmlFor="signinSrPassword">Password</label>
-                    <input type="password" className="form-control" name="password" id="signinSrPassword" placeholder="********" aria-label="********" required="" data-msg="Your password is invalid. Please try again." />
+                    <input type="password" className="form-control" name="password" id="signinSrPassword" placeholder="********" aria-label="********" required="" data-msg="Your password is invalid. Please try again." onChange={(event) => {
+
+                        setPassword(event.target.value);
+                    }} />
+                    <span style={{ color: "red" }}>{errorPassword}</span><br />
                 </div>
 
                 <div className="js-form-message form-group">
@@ -91,7 +117,7 @@ const Registration = () => {
                         <label className="custom-control-label" htmlFor="termsCheckbox">
                             <small>
                                 I agree to the
-                                <a className="link-underline ml-2" href="#!">Terms and Conditions</a>
+                                <Link className="link-underline ml-2" href="#!">Terms and Conditions</Link>
                             </small>
                         </label>
                     </div>
@@ -100,7 +126,7 @@ const Registration = () => {
                 <div className="row align-items-center mb-5">
                     <div className="col-sm-6 mb-3 mb-sm-0">
                         <span className="font-size-1 text-muted">Already have an account?</span>
-                        <a to="/login" className="font-size-1 font-weight-bold ml-2" href="#!">Login</a>
+                        <Link to="/login" className="font-size-1 font-weight-bold ml-2" href="#!">Login</Link>
                     </div>
 
                     <div className="col-sm-6 text-sm-right">

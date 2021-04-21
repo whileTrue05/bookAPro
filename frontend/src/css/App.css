@@ -134,3 +134,27 @@ div.content div.selection h2{
 .modal form *{
   margin: 1rem 0;
 } */
+
+.slick-initialized .slick-slide:not(.slick-current){
+  display: none!important;
+}
+
+.slick-slide.slick-active.slick-current{
+left: 0!important;
+}
+
+.react-datetime-picker__wrapper{
+  display: block;
+    width: 100%;
+    height: calc(1.6em + 1.625rem);
+    padding: .75rem 1rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #1e2022;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: .0625rem solid #e7eaf3;
+    border-radius: .3125rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}

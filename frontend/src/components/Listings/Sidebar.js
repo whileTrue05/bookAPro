@@ -1,6 +1,11 @@
 import { Link } from 'react-router-dom';
+import { useState, useContext } from "react";
+import BookAProContext from "../Context/BookAProContextProvider";
 
 const Sidebar = () => {
+
+  const userContext = useContext(BookAProContext);
+  const categories = userContext.categories;
   return (
       <div className="mr-lg-3">
         <div className="navbar-expand-lg navbar-expand-lg-collapse-block navbar-light">
@@ -30,23 +35,18 @@ const Sidebar = () => {
               <div className="mt-3 mt-lg-0">
                 <h2 className="h4">Categories</h2>
 
-                <a className="dropdown-item d-flex justify-content-between align-items-center px-0" href="#">
+                <Link className="dropdown-item d-flex justify-content-between align-items-center px-0" to="/category/all">
                   All
-                  <span className="badge border badge-pill">30+</span>
-                </a>
-                <a className="dropdown-item d-flex justify-content-between align-items-center px-0" href="#">
-                  Shirts
-                </a>
-                <a className="dropdown-item d-flex justify-content-between align-items-center px-0" href="#">
-                  Jeans
-                </a>
-                <a className="dropdown-item d-flex justify-content-between align-items-center px-0" href="#">
-                  Electronics
-                </a>
-                <a className="dropdown-item d-flex justify-content-between align-items-center px-0" href="#">
-                  Appliances
-                  <span className="badge border badge-pill">18</span>
-                </a>
+                  <span className="badge border badge-pill">{userContext.services.length}</span>
+                </Link>
+                {categories.map((item, index) => {
+                    
+                    return (
+                      <Link className="dropdown-item d-flex justify-content-between align-items-center px-0" href="#!" to={"/category/"+item.categoryId}>
+                        {item.name}
+                      </Link>
+                    )
+                })}
               </div>
 
               
